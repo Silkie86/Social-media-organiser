@@ -1,0 +1,32 @@
+appId: com.silkie86.crate
+productName: Crate
+directories:
+  buildResources: build
+  output: release
+files:
+  - out/**
+  - package.json
+asarUnpack:
+  - node_modules/ffmpeg-static/**
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.png
+  artifactName: Crate-Setup-${version}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+mac:
+  target: [dmg]
+  icon: build/icon.png
+  category: public.app-category.social-networking
+linux:
+  target: [AppImage]
+  icon: build/icon.png
+  category: AudioVideo
+extraResources:
+  - from: build/tray.png
+    to: tray.png
